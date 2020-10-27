@@ -1,0 +1,75 @@
+<div class="container">
+
+    <!-- Page Heading -->
+
+    <div class="row superior">
+
+
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header text-white bg_bule" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn  btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                   Opcion 1 .- Describe tu problema:
+                  </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+
+
+                        <h2>¿Que servicio necesitas? Trata de ser especifico:</h2>
+                        <br/>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <br/>
+                        <button type="submit" class="btn bg_bule" [routerLink]="['/pagoCliente']">Cotizar</button>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header text-white bg-dark" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Opcion 2 .- Contacta directamente a nuestro socio:
+                  </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <h2>Ponte en contacto directamente con el y recibe su cotizacion segun lo acuerden:</h2>
+                        <br/>
+
+                        <button type="submit" class="btn btn-dark" [routerLink]="['/pagoCliente']">5565215555</button></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header text-white bg-info" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    ¿Tienes algun problema?
+                  </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <h2>Si no se ha solucionado tu problema no dudes en ponerte en contacto:</h2>
+                        <p>El texto latino original de Dal De finibus bonorum et malorum secciones 1.10.32 y 1.10.33 - Marco Tullio Cicerone « Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
+                            eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui
+                            ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat
+                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil
+                            molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>

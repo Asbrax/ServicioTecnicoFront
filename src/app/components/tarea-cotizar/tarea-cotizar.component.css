@@ -1,0 +1,21 @@
+.accordion {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.btn {
+    color: white;
+    font-size: x-large;
+}
+
+.bg_bule {
+    background: #303F9F;
+}
+
+.superior {
+    margin-top: 5%;
+}
+
+.container {
+    height: 1060px;
+}

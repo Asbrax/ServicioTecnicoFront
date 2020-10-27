@@ -1,0 +1,16 @@
+.small,
+small {
+    font-size: 65%;
+}
+
+.superior {
+    margin-top: 5%;
+}
+
+.container {
+    height: 100%;
+}
+
+.btn-secondary {
+    margin-left: 10px;
+}

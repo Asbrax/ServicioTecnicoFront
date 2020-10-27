@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "webFront"
+  "defaultProject": "webFront",
+  "cli": {
+    "analytics": false
+  }
 }

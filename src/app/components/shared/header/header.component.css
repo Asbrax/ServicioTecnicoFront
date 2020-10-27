@@ -1,0 +1,14 @@
+.navbar-brand {
+    font-size: 2.25rem;
+    font-family: 'Kanit', sans-serif;
+}
+
+svg {
+    margin-right: 10px;
+}
+
+.my-nav-bg {
+    /* background-color: #3f51b5;*/
+    background: rgb(9, 9, 121);
+    background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0%, rgba(74, 67, 224, 1) 35%, rgba(9, 9, 121, 1) 100%);
+}

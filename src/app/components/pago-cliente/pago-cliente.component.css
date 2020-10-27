@@ -1,0 +1,20 @@
+.card {
+    width: 100%;
+}
+
+.superior {
+    margin-top: 5%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.container {
+    min-height: 1060px;
+}
+
+.img-fluid {
+    width: 30%;
+    margin-left: 15%;
+}
