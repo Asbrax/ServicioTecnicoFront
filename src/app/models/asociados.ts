@@ -1,0 +1,29 @@
+export interface Asociados {
+    id: number;
+    name: string;
+    image: string;
+    description: string;
+    category_id: number;
+    state_id: number;
+    municipality_id: number;
+    phone: string;
+    quality_g: number;
+    quality_n: number;
+    quality_b: number;
+    ontime_g: number;
+    ontime_n: number;
+    ontime_b: number;
+    flexibility_g: number;
+    flexibility_n: number;
+    flexibility_b: number;
+    friendly_g: number;
+    friendly_n: number;
+    friendly_b: number;
+    accurate_g: number;
+    accurate_n: number;
+    accurate_b: number;
+    long: string;
+    lat: string;
+    created_at?: any;
+    updated_at?: any;
+}

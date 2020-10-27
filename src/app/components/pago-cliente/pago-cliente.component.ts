@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Pago } from '../../models/pago';
+import { Router } from '@angular/router';
+import { PagosService } from '../../services/pagos.service';
+
 
 @Component({
   selector: 'app-pago-cliente',
@@ -7,9 +11,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagoClienteComponent implements OnInit {
 
-  constructor() { }
+    usuario_id: string;
+    asociado_id: string;
+    monto: number;
+    titular: string;
+    numero_tarjeta: number;
+    mes: number;
+    ano: number;
+    cvv: number;
+
+    pagolocal: Pago;
+
+  constructor(public pagosService: PagosService,  private router: Router) {
+    this.pagolocal = new Pago();
+    this.monto = 1500;
+   }
 
   ngOnInit() {
   }
+
+
+  pagar(): void {
+    if (this.numero_tarjeta == null || this.titular == null 
+      || this.mes == null || this.ano == null
+      || this.cvv == null) {
+      alert('¡Completa los campos antes de continuar!');
+      return;
+    }
+
+    this.pagolocal.usuario_id = sessionStorage.getItem('id');
+    this.pagolocal.asociado_id= sessionStorage.getItem('id');
+    this.pagolocal.monto= this.monto;
+    this.pagolocal.titular= this.titular;
+    this.pagolocal.numero_tarjeta= this.numero_tarjeta;
+    this.pagolocal.mes= this.mes;
+    this.pagolocal.ano= this.ano;
+    this.pagolocal.cvv= this.cvv;
+
+
+    this.pagosService.pagar(this.pagolocal).subscribe(response => {
+
+      sessionStorage.setItem('p_user_id', response.result.user_id);
+      sessionStorage.setItem('p_provider_id', response.result.provider_id);
+      sessionStorage.setItem('p_amount', response.result.amount);
+      sessionStorage.setItem('p_card_holder', response.result.card_holder);
+      sessionStorage.setItem('p_card_number', response.result.card_number);
+      sessionStorage.setItem('p_transactions_fiserv_id', response.result.transactions_fiserv_id);
+      sessionStorage.setItem('p_status', response.result.status);
+      sessionStorage.setItem('p_updated_at', response.result.updated_at);
+      sessionStorage.setItem('p_created_at', response.result.created_at);
+      sessionStorage.setItem('p_id', response.result.id);
+
+      this.router.navigate(['/pagoExitoso']);
+    }, err => {
+      if (err.status === 400 || err.status === 401) {
+        alert( 'Transaccion de pago incorrecta, no tienes permisos suficientes!');
+      } else {
+        alert( 'Error en el pago!');
+      }
+    }
+    );
+  }
+
+
 
 }

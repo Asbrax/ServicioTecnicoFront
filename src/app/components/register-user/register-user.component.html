@@ -4,215 +4,40 @@
 
 
         <mat-card class="mat-elevation-z12">
-            <mat-card-title style="text-align:center;">Acceder / Registrarse</mat-card-title>
+            <mat-card-title style="text-align:center;">Acceder</mat-card-title>
             <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
 
 
-                <mat-tab label="Acceder">
+                <mat-tab label="Ingresa tus datos de registro">
                     <mat-card-content>
-                        <form action="">
-                            <mat-form-field>
 
-                                <input matInput placeholder="Email" required name="email" ngModel #email="ngModel">
-                                <mat-error *ngIf="email.invalid">Tu email es necesario </mat-error>
-                                <mat-icon matSuffix>email</mat-icon>
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Contraseña" type="password" required minlength="6" name="password" ngModel #password="ngModel">
-                                <mat-error *ngIf="password.errors && password.errors.required">
-                                    Contraseña es requerida
-                                </mat-error>
-                                <mat-error *ngIf="password.errors && password.errors.minlength">
-                                    Contraseña debe ser de al menos 6 caracteres
-                                </mat-error>
-                                <mat-icon matSuffix>lock</mat-icon>
-                            </mat-form-field>
-                            <mat-checkbox>Guardar contraseña</mat-checkbox>
-                            <br/>
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Acceder</button>
-                            <br>
-                            <button type="button" class="btn btn-dark btn-lg btn-block">Acceder con Google</button>
+                        <form action="">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input [(ngModel)]="usuario.name" class="form-control" name="name" id="name" aria-describedby="nameHelp" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input [(ngModel)]="usuario.email" type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input [(ngModel)]="usuario.password" type="password" class="form-control" id="password" name="password" required minlength="5">
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-lg btn-block" (click)='registro()'>Registrar</button>
 
                         </form>
+
+
+
                     </mat-card-content>
                 </mat-tab>
 
 
-                <mat-tab label="Registrar">
-                    <mat-card-content>
-                        <form action="">
-                            <mat-form-field>
-                                <input matInput placeholder="Usuario" required name="username" ngModel #username="ngModel">
-                                <mat-icon matSuffix>perm_identity</mat-icon>
-                                <mat-error *ngIf="username.invalid">
-                                    Tu usuario es requerido
-                                </mat-error>
 
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Email" required name="email" ngModel #email="ngModel">
-                                <mat-error *ngIf="email.invalid">Email es requerido</mat-error>
-                                <mat-icon matSuffix>email</mat-icon>
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Contraseña" type="password" required minlength="6" name="password" ngModel #password="ngModel">
-                                <mat-error *ngIf="password.errors && password.errors.required">
-                                    Contraseña requerida
-                                </mat-error>
-                                <mat-error *ngIf="password.errors && password.errors.minlength">
-                                    Contraseña debe ser de al menos 6 caracteres
-                                </mat-error>
-                                <mat-icon matSuffix>lock</mat-icon>
-
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Contraseña" type="password" required minlength="6" name="repassword" ngModel #repassword="ngModel">
-                                <mat-error *ngIf="repassword.errors && repassword.errors.required">
-                                    Confirma tu contraseña
-                                </mat-error>
-                                <mat-icon matSuffix>lock</mat-icon>
-                            </mat-form-field>
-                            <br/>
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Registro</button>
-                        </form>
-                    </mat-card-content>
-                </mat-tab>
             </mat-tab-group>
         </mat-card>
     </div>
-    <!--
-<div class="login-page">
-  <mat-card class="mat-elevation-z12">
-    <mat-card-title style="text-align:center;">Acceder / Registrase</mat-card-title>
-    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
-      <mat-tab label="Sign In">
-          <mat-card-content>
-            <form action="">
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Email"
-                  required
-                  name="email"
-                  ngModel
-                  #email="ngModel">
-                  <mat-error *ngIf="email.invalid">El email es requerido</mat-error>
-                <mat-icon matSuffix>email</mat-icon>
-              </mat-form-field>
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Contraseña"
-                  type="password"
-                  required
-                  minlength="6"
-                  name="password"
-                  ngModel
-                  #password="ngModel">
-                  <mat-error
-                    *ngIf="password.errors && password.errors.required">
-                    Contraseña requerida
-                  </mat-error>
-                  <mat-error
-                    *ngIf="password.errors && password.errors.minlength">
-                    Contraseña debe ser de al menos 6 caracteres
-                  </mat-error>
-                <mat-icon matSuffix>lock</mat-icon>
-              </mat-form-field>
-              <mat-checkbox>Remember Me!</mat-checkbox>
-              <button
-                mat-raised-button
-                color="primary"
-                class="login-button">
-                Acceder
-              </button>
-
-              <button
-                mat-raised-button
-                class="login-button">
-                Login with Google
-              </button>
-            </form>
-          </mat-card-content>
-      </mat-tab>
-      <mat-tab label="Sign Up">
-        <mat-card-content>
-          <form action="">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Usuario"
-                required
-                name="username"
-                ngModel
-                #username="ngModel">
-              <mat-icon matSuffix>perm_identity</mat-icon>
-              <mat-error
-                *ngIf="username.invalid">
-                Usuario requerido
-              </mat-error>
-
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Email"
-                required
-                name="email"
-                ngModel
-                #email="ngModel">
-                <mat-error *ngIf="email.invalid">El email es requerido</mat-error>
-              <mat-icon matSuffix>email</mat-icon>
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Contraseña"
-                type="password"
-                required
-                minlength="6"
-                name="password"
-                ngModel
-                #password="ngModel">
-                <mat-error
-                  *ngIf="password.errors && password.errors.required">
-                  Contraseña requerida
-                </mat-error>
-                <mat-error
-                  *ngIf="password.errors && password.errors.minlength">
-                  Contraseña debe ser de al menos 6 caracteres
-                </mat-error>
-              <mat-icon matSuffix>lock</mat-icon>
-
-            </mat-form-field>
-            <mat-form-field>
-                <input
-                matInput
-                placeholder="Contraseña"
-                type="password"
-                required
-                minlength="6"
-                name="repassword"
-                ngModel
-                #repassword="ngModel">
-                <mat-error
-                  *ngIf="repassword.errors && repassword.errors.required">
-                  Confirma password
-                </mat-error>
-              <mat-icon matSuffix>lock</mat-icon>
-            </mat-form-field>
-            <button
-              mat-raised-button
-              color="primary"
-              class="login-button">
-              Registrarse
-            </button>
-          </form>
-        </mat-card-content>
-      </mat-tab>
-    </mat-tab-group>
-  </mat-card>
-</div>
--->
-
 </div>

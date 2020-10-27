@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/auth';
+import { UsuarioRegistro } from '../models/usuario-registro';
 
 
 @Injectable({
@@ -18,8 +19,8 @@ export class AuthService {
   public get usuario(): Usuario {
     if (this._usuario != null) {
       return this._usuario;
-    } else if (this._usuario == null && sessionStorage.getItem('usuario') != null) { 
-      this._usuario = JSON.parse(sessionStorage.getItem('usuario')) as Usuario;
+    } else if (this._usuario == null && sessionStorage.getItem('email') != null) { 
+      this._usuario = JSON.parse(sessionStorage.getItem('email')) as Usuario;
       return this._usuario;
     }
     return new Usuario();
@@ -36,27 +37,44 @@ export class AuthService {
   }
 
   login(usuario: Usuario): Observable<any> {
-    const urlEndpoint = this.URL_BACKEND + '/oauth/token';
-
-    const credenciales = btoa('angularapp' + ':' + '12345');
+    const urlEndpoint = this.URL_BACKEND + 'api/auth/login';
 
     const httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + credenciales
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest '
     });
 
-    let params = new URLSearchParams();
-    params.set('username', usuario.username);
-    params.set('password', usuario.password);
-    console.log(params.toString());
-    return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
+    //console.log(usuario.toString());
+    //console.log(urlEndpoint);
+    return this.http.post<any>(urlEndpoint, usuario, { headers: httpHeaders });
   }
 
-  guardarUsuario(accessToken: string): void {
-    let payload = this.obtenerDatosToken(accessToken);
-    this._usuario = new Usuario();
-    this._usuario.username = payload.user_name;
-    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+
+  registro(usuario: UsuarioRegistro): Observable<any> {
+    const urlEndpoint = this.URL_BACKEND + 'api/auth/signup';
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest '
+    });
+
+    //console.log(usuario.toString());
+    //console.log(urlEndpoint);
+    return this.http.post<any>(urlEndpoint, usuario, { headers: httpHeaders });
+  }
+
+
+  userInfo(token: string): Observable<any> {
+    const urlEndpointInf = this.URL_BACKEND + 'api/auth/user';
+    const tokenCat = 'Bearer ' + token;
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': tokenCat
+    });
+    //console.log(httpHeaders.get('Authorization'));
+    //console.log(urlEndpointInf);
+    return this.http.get<any>(urlEndpointInf,  { headers: httpHeaders });
   }
 
   guardarToken(accessToken: string): void {
@@ -64,24 +82,13 @@ export class AuthService {
     sessionStorage.setItem('token', accessToken);
   }
 
-  obtenerDatosToken(accessToken: string): any {
-    if (accessToken != null) {
-      return JSON.parse(atob(accessToken.split(".")[1]));
-    }
-    return null;
-  }
-
   isAuthenticated(): boolean {
-    let payload = this.obtenerDatosToken(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
-      return true;
-    }
-    return false;
-  }
-
-  hasRole(role: string): boolean {
-    if (this.usuario.roles.includes(role)) {
-      return true;
+    if (sessionStorage != null && sessionStorage.getItem('name') != null ) {
+      if (sessionStorage.getItem('name').length > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
     return false;
   }
@@ -92,5 +99,6 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+    sessionStorage.clear();
   }
 }

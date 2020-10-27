@@ -8,6 +8,7 @@ import {RegisterUserComponent } from './components/register-user/register-user.c
 import { TareaCotizarComponent } from './components/tarea-cotizar/tarea-cotizar.component';
 import {HistorialOperacionesComponent} from './components/historial-operaciones/historial-operaciones.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const APP_ROUTES: Routes = [
     {path: 'asociado/:id', component: AsociadoComponent},
@@ -17,6 +18,7 @@ const APP_ROUTES: Routes = [
     {path: 'pagoExitoso', component: PagoExitosoComponent},
     {path: 'historial', component: HistorialOperacionesComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'perfil', component: PerfilComponent},
     {path: 'registro', component: RegisterUserComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'asociados'}
 ];

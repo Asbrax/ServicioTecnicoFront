@@ -12,9 +12,9 @@
 
             <div class="card-header text-white bg-dark"><b> <h2>Detalles del Pago</h2></b></div>
             <div class="card-body text-dark">
-                <img src="./../../../assets/front-tc.jpg" class="img-fluid" alt="Responsive image">
+                <img src="http://wisecode.com.mx/FiservChallenge/assets/front-tc.jpg" class="img-fluid" alt="Responsive image">
 
-                <img src="./../../../assets/back-tc.jpg" class="img-fluid" alt="Responsive image">
+                <img src="http://wisecode.com.mx/FiservChallenge/assets/back-tc.jpg" class="img-fluid" alt="Responsive image">
                 <br/>
                 <br/>
                 <h5 class="card-title">Pago de servicios</h5>
@@ -28,34 +28,32 @@
 
                 <div class="form-group">
                     <h5 class="card-title">Numero de la tarjeta</h5>
-                    <input type="email" class="form-control" id="1" placeholder="**** **** **** 5555">
+                    <input [(ngModel)]="numero_tarjeta" class="form-control" placeholder="**** **** **** 5555">
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Nombre del titular</h5>
-                    <input type="email" class="form-control" id="2" placeholder="Juan Pe">
+                    <input [(ngModel)]="titular" class="form-control" id="2" placeholder="Juan Pe">
                 </div>
                 <div class="form-group">
-                    <h5 class="card-title">Fecha de expiración</h5>
-                    <input type="email" class="form-control" id="3" placeholder="MM/YYYY">
+                    <h5 class="card-title">Mes de expiración</h5>
+                    <input [(ngModel)]="mes" class="form-control" id="3" placeholder="MM">
+                </div>
+                <div class="form-group">
+                    <h5 class="card-title">Año de expiración</h5>
+                    <input [(ngModel)]="ano" class="form-control" id="3" placeholder="YY">
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Numero CVV</h5>
-                    <input type="email" class="form-control" id="4" placeholder="">
+                    <input [(ngModel)]="cvv" class="form-control" id="4" placeholder="">
                 </div>
 
             </div>
             <div class="card-footer bg-light">
-                <button type="submit" class="btn btn-info" [routerLink]="['/pagoExitoso']">Pagar Servicio</button>
+                <button type="submit" class="btn btn-info" (click)='pagar()'>Pagar Servicio</button>
             </div>
         </div>
 
 
-        <!-- Call to Action Well -->
-        <div class="card text-white bg-info my-5 py-4 text-center">
-            <div class="card-body">
-                <h2>¡Estamos a punto de terminar!</h2>
-            </div>
-        </div>
 
 
     </div>

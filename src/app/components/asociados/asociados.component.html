@@ -10,9 +10,8 @@
             <hr>
             <form>
                 <div class="form-row align-items-center">
-                    <div class="form-group col-md-12 ">
-                        <label for="formControlRange">Distancia en KM</label>
-                        <input type="range" class="form-control-range" id="formControlRange">
+                    <div class="col-sm-6 my-1">
+                        <input class="form-control form-control-sm" type="text" placeholder="Nombre(opcional)">
                     </div>
                     <div class="col-sm-6 my-1">
                         <select class="form-control form-control-sm">
@@ -20,10 +19,19 @@
                         <option>Plomeria</option>
                       </select>
                     </div>
-
-                    <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    <div class="col-sm-6 my-1">
+                        <select class="form-control form-control-sm">
+                        <option>Estado</option>
+                        <option>Plomeria</option>
+                      </select>
                     </div>
+                    <div class="col-sm-6 my-1">
+                        <select class="form-control form-control-sm">
+                        <option>Mpio / Alcaldia</option>
+                        <option>Plomeria</option>
+                      </select>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
                 </div>
             </form>
         </div>
@@ -43,76 +51,27 @@
         <small>Profesionales cerca de ti</small>
     </h2>
 
+    <div *ngFor="let asociado of asociados">
+        <!-- Project One -->
+        <div class="row animated fadeIn ">
+            <div class="col-md-4">
+                <a href="#">
+                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://wisecode.com.mx/FiservChallenge/assets/asociados/{{asociado.image}}" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h3>{{asociado.name}}</h3>
+                <p> {{asociado.description}} </p>
+                <a [routerLink]="['/asociado',1]" class="btn btn-primary btn-lg">Detalles</a>
+                <a [routerLink]="['/cotizar']" class="btn btn-secondary btn-lg">Contratar</a>
+            </div>
+        </div>
+        <!-- /.row -->
 
-    <!-- Project One -->
-    <div class="row animated fadeIn ">
-        <div class="col-md-4">
-            <a href="#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/750x500" alt="">
-            </a>
-        </div>
-        <div class="col-md-8">
-            <h3>Project One</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde. </p>
-            <a [routerLink]="['/asociado',1]" class="btn btn-primary btn-lg">Detalles</a>
-            <a [routerLink]="['/cotizar']" class="btn btn-secondary btn-lg">Contratar</a>
-        </div>
+        <hr>
     </div>
-    <!-- /.row -->
 
-    <hr>
 
-    <!-- Project Two -->
-    <div class="row">
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Two</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-            <a class="btn btn-primary" href="#">View Project</a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Project Three -->
-    <div class="row">
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Three</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-            <a class="btn btn-primary" href="#">View Project</a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Project Four -->
-    <div class="row">
-
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Four</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-            <a class="btn btn-primary" href="#">View Project</a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
 
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
