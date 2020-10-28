@@ -15,7 +15,7 @@ const APP_ROUTES: Routes = [
     {path: 'asociados', component: AsociadosComponent},
     {path: 'cotizar', component: TareaCotizarComponent},
     {path: 'pagoCliente', component: PagoClienteComponent},
-    {path: 'pagoExitoso', component: PagoExitosoComponent},
+    {path: 'pagoExitoso/:id', component: PagoExitosoComponent},
     {path: 'historial', component: HistorialOperacionesComponent},
     {path: 'login', component: LoginComponent},
     {path: 'perfil', component: PerfilComponent},

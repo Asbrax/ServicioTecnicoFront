@@ -51,18 +51,7 @@ export class PagoClienteComponent implements OnInit {
 
     this.pagosService.pagar(this.pagolocal).subscribe(response => {
 
-      sessionStorage.setItem('p_user_id', response.result.user_id);
-      sessionStorage.setItem('p_provider_id', response.result.provider_id);
-      sessionStorage.setItem('p_amount', response.result.amount);
-      sessionStorage.setItem('p_card_holder', response.result.card_holder);
-      sessionStorage.setItem('p_card_number', response.result.card_number);
-      sessionStorage.setItem('p_transactions_fiserv_id', response.result.transactions_fiserv_id);
-      sessionStorage.setItem('p_status', response.result.status);
-      sessionStorage.setItem('p_updated_at', response.result.updated_at);
-      sessionStorage.setItem('p_created_at', response.result.created_at);
-      sessionStorage.setItem('p_id', response.result.id);
-
-      this.router.navigate(['/pagoExitoso']);
+      this.router.navigate(['/pagoExitoso/' + response.result.id]);
     }, err => {
       if (err.status === 400 || err.status === 401) {
         alert( 'Transaccion de pago incorrecta, no tienes permisos suficientes!');

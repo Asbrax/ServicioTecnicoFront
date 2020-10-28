@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PagosService } from '../../services/pagos.service';
 
 @Component({
   selector: 'app-pago-exitoso',
@@ -7,21 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagoExitosoComponent implements OnInit {
 
-  
 
-  pagolocal.usuario_id=sessionStorage.getItem('p_user_id');
-  pagolocal.asociado_id= sessionStorage.getItem('p_provider_id');
-  pagolocal.monto=   sessionStorage.getItem('p_amount');
-  pagolocal.titular=   sessionStorage.getItem('p_card_holder');
-  pagolocal.numero_tarjeta=   sessionStorage.getItem('p_card_number');
-  pagolocal.transaccion=    sessionStorage.getItem('p_transactions_fiserv_id');
-  pagolocal.estado=    sessionStorage.getItem('p_status');
+  pagolocal: any;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, public pagosService: PagosService) { }
 
   ngOnInit() {
+    this.pagoDetalle();
+    /*
+    setTimeout (() => {
+      this.pagoDetalle();
+  }, 2000);
+
+*/
+
   }
 
+  pagoDetalle(): void {
+    this.activatedRoute.params.subscribe(params => {
+      const id = params.id;
+      console.log(id);
+      if (id) {
+        this.pagosService.pagoDetalle(id).subscribe(response => {
+            console.log('pago detalle response');
+            this.pagolocal = response.result[0];
+            console.log(this.pagolocal);
+        }, err => {
+          if (err.status === 400 || err.status === 401) {
+            alert( 'Transaccion de pago incorrecta, no tienes permisos suficientes!');
+          } else {
+            alert( 'Error en el pago!');
+          }
+        }
+          );
+      }
+    });
+  }
+  
 
  
 }

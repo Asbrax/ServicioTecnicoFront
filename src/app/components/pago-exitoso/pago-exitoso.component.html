@@ -7,14 +7,19 @@
         </div>
     </div>
 
+
+
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h1 class="display-3">Detalle de tu pago</h1>
         <p class="lead">Tu pago fue realizado correctamente.</p>
         <ul class="list-group list-group-horizontal-xl">
-            <li class="list-group-item">Monto: <b>$1500.00</b></li>
-            <li class="list-group-item">Fecha: <b>26/10/2020</b> </li>
-            <li class="list-group-item">Transacción <b>3456768989878</b></li>
+            <li class="list-group-item">Monto: <b>${{pagolocal.amount}}</b></li>
+            <li class="list-group-item">Fecha: <b> {{pagolocal.created_at}}</b> </li>
+            <li class="list-group-item">Transacción <b>{{pagolocal.id}}</b></li>
+            <li class="list-group-item">Nombre <b>{{pagolocal.card_holder}}</b></li>
+            <li class="list-group-item">Tarjeta <b>{{pagolocal.card_number}}</b></li>
+            <li class="list-group-item">Estado <b>{{pagolocal.status}}</b></li>
         </ul>
         <br/>
         <br/>

@@ -2,8 +2,8 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-        <h1 class="display-3">Proveedor Asociado</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <h1 class="display-3">{{myResponse.name}}</h1>
+        <p class="lead">{{myResponse.description}}</p>
         <a [routerLink]="['/cotizar']" class="btn btn-primary btn-lg">Contratame!</a>
         <a [routerLink]="['/asociados']" class="btn btn-secondary btn-lg">Regresar</a>
     </header>
@@ -95,12 +95,12 @@
     <div class="row animated fadeIn ">
         <div class="col-md-4">
             <a href="#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/750x500" alt="">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="http://wisecode.com.mx/FiservChallenge/assets/asociados/{{myResponse.image}}" alt="">
             </a>
         </div>
         <div class="col-md-8">
-            <h3>Project One</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde. </p>
+            <h3>{{myResponse.name}}</h3>
+            <p>{{myResponse.description}} </p>
             <a [routerLink]="['/cotizar']" class="btn btn-primary btn-lg">Contratar!</a>
 
         </div>

@@ -25,4 +25,22 @@ export class PagosService {
 
     return this.http.post<any>(urlEndpoint, pago, { headers: httpHeaders });
   }
+
+  
+
+  pagoDetalle(id: string): Observable<any> {
+    const urlEndpointInf = this.URL_BACKEND + 'api/transaction/details/' + id;
+    const tokenCat = 'Bearer ' + sessionStorage.getItem('token');
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': tokenCat
+    });
+    return this.http.get<any>(urlEndpointInf,  { headers: httpHeaders });
+  }
+
+
+
+
+
 }

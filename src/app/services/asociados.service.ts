@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Asociados } from '../models/asociados';
 import { of, Observable, from} from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map,tap} from 'rxjs/operators';
 
 
@@ -21,12 +21,23 @@ getAsociados(): Observable <any>{
     }),
     map((response: any) => {
       ( response.result.data as Asociados[]).map(asociado =>{
-        asociado.name = asociado.name.toUpperCase();
         return asociado;
     });
       return response.result.data;
     })
   );
 }
+
+
+getAsociadoDetail(id: string): Observable<any> {
+  const urlEndpointInf = 'http://back2end.com/api/services/details/' + id;
+  const httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  });
+  return this.http.get<any>(urlEndpointInf,  { headers: httpHeaders });
+}
+
+
 
 }

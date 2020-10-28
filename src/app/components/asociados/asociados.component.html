@@ -62,7 +62,7 @@
             <div class="col-md-8">
                 <h3>{{asociado.name}}</h3>
                 <p> {{asociado.description}} </p>
-                <a [routerLink]="['/asociado',1]" class="btn btn-primary btn-lg">Detalles</a>
+                <a [routerLink]="['/asociado',asociado.id]" class="btn btn-primary btn-lg">Detalles</a>
                 <a [routerLink]="['/cotizar']" class="btn btn-secondary btn-lg">Contratar</a>
             </div>
         </div>

@@ -17,13 +17,31 @@ export class PerfilComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.name = sessionStorage.getItem('name');
-    this.email = sessionStorage.getItem('email');
-    this.creado = sessionStorage.getItem('creado');
-    this.verificado = sessionStorage.getItem('verificado');
-    this.id = sessionStorage.getItem('id');
+    this.userInfo();
   }
 
+
+  userInfo(): void {
+    this.authService.userInfo(sessionStorage.getItem('token')).subscribe(response => {
+      //console.log(response);
+
+      this.name = response.name;
+      this.email = response.email;
+      this.creado = response.created_at;
+      this.verificado = response.email_verified_at;
+      this.id = response.id;
+
+      //this.router.navigate(['/asociados']);
+      //alert(`Hola ${this.usuario.email}, has iniciado sesión con éxito!`);
+    }, err => {
+      if (err.status == 400) {
+        alert( 'Usuario o clave incorrectas!');
+      }else{
+        alert( 'Error con la info del usuario!');
+      }
+    }
+    );
+  }
 
   logout(){
 
