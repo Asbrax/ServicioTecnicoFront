@@ -3,41 +3,36 @@
 
         <div class="card">
             <div class="card-header">
-                Historial de operaciones
+                <h2>Historial de operaciones</h2>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Asociado</th>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Proveedor</th>
                             <th scope="col">Monto</th>
+                            <th scope="col">Tarjeta</th>
+                            <th scope="col">Estado del pago</th>
                             <th scope="col">Fecha</th>
-                            <th scope="col">Evaluado</th>
+                            <th scope="col">Estado del servicio</th>
+                            <th scope="col">Calificar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                        <tr *ngFor="let evento of transaccions">
+                            <th>{{evento.id}}</th>
+                            <th>{{evento.user_id}}</th>
+                            <th> {{evento.provider_id}}</th>
+                            <th> {{evento.amount}}</th>
+                            <th>{{evento.card_number}}</th>
+                            <th>{{evento.status}}</th>
+                            <th>{{evento.created_at | date: 'yyyy / MM / dd'}}</th>
+                            <th>Terminado</th>
+                            <th><button type="button" class="btn btn-warning disabled">Calificar</button></th>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                        </tr>
+
                     </tbody>
                 </table>
 

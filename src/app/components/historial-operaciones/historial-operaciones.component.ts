@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { PagosService } from '../../services/pagos.service';
 
 @Component({
   selector: 'app-historial-operaciones',
@@ -9,26 +10,32 @@ import { Router } from '@angular/router';
 })
 export class HistorialOperacionesComponent implements OnInit {
 
-  name = '';
-  email = '';
-  creado = '';
-  verificado = '';
-  id = '';
-
-
-  constructor(public authService: AuthService, private router: Router) {   }
+  transaccions: any;
+  constructor(public authService: AuthService, private router: Router, public pagosService: PagosService) {   }
 
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login']);
     }
-    this.name = sessionStorage.getItem('name');
-    this.email = sessionStorage.getItem('email');
-    this.creado = sessionStorage.getItem('creado');
-    this.verificado = sessionStorage.getItem('verificado');
-    this.id = sessionStorage.getItem('id');
-
-
+    this.getTransaccions();
   }
+
+  getTransaccions(): void {
+      const id = sessionStorage.getItem('id');
+      if (id) {
+        this.pagosService.getTransaccions(id).subscribe(response => {
+          this.transaccions = response.result;
+        }, err => {
+          if (err.status === 400 || err.status === 401) {
+            alert( 'Transaccion de pago incorrecta, no tienes permisos suficientes!');
+          } else {
+            alert( 'Error en el pago!');
+          }
+        }
+          );
+      }
+    }
+
+
 
 }

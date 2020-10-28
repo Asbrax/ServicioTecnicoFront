@@ -34,7 +34,7 @@ export class RegisterUserComponent implements OnInit {
     this.authService.registro(this.usuario).subscribe(response => {
 
       this.authService.guardarToken(response.access_token);
-      alert('Usuario ' + this.usuario.name + ' creado con exito');
+      alert('Usuario ' + this.usuario.name + ' creado con éxito');
       this.router.navigate(['/login']);
     }, err => {
       if (err.status === 400 || err.status === 401) {

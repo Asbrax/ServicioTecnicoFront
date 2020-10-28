@@ -18,7 +18,7 @@
                 <br/>
                 <br/>
                 <h5 class="card-title">Pago de servicios</h5>
-                <p class="card-text">Para proceder es necesario que nos compartas tu darkrmacion de pago ya sea tarjeta de credito o debito.</p>
+                <p class="card-text">Para proceder es necesario que nos compartas tu información de pago ya sea tarjeta de crédito o débito.</p>
                 <br/>
 
 
@@ -27,24 +27,24 @@
                 </div>
 
                 <div class="form-group">
-                    <h5 class="card-title">Numero de la tarjeta</h5>
-                    <input [(ngModel)]="numero_tarjeta" class="form-control" placeholder="**** **** **** 5555">
+                    <h5 class="card-title">Número de la tarjeta</h5>
+                    <input [(ngModel)]="numero_tarjeta" class="form-control" placeholder="**** **** **** 5555" maxlength="16" minlength="16" required>
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Nombre del titular</h5>
-                    <input [(ngModel)]="titular" class="form-control" id="2" placeholder="Juan Pe">
+                    <input [(ngModel)]="titular" class="form-control" id="2" placeholder="Juan Pe" required>
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Mes de expiración</h5>
-                    <input [(ngModel)]="mes" class="form-control" id="3" placeholder="MM">
+                    <input [(ngModel)]="mes" class="form-control" id="3" placeholder="MM" required maxlength="2">
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Año de expiración</h5>
-                    <input [(ngModel)]="ano" class="form-control" id="3" placeholder="YY">
+                    <input [(ngModel)]="ano" class="form-control" id="3.5" placeholder="YY" required maxlength="2">
                 </div>
                 <div class="form-group">
                     <h5 class="card-title">Numero CVV</h5>
-                    <input [(ngModel)]="cvv" class="form-control" id="4" placeholder="">
+                    <input [(ngModel)]="cvv" class="form-control" id="4" placeholder="" required maxlength="4">
                 </div>
 
             </div>

@@ -44,8 +44,6 @@ export class AuthService {
       'X-Requested-With': 'XMLHttpRequest '
     });
 
-    //console.log(usuario.toString());
-    //console.log(urlEndpoint);
     return this.http.post<any>(urlEndpoint, usuario, { headers: httpHeaders });
   }
 
@@ -58,8 +56,6 @@ export class AuthService {
       'X-Requested-With': 'XMLHttpRequest '
     });
 
-    //console.log(usuario.toString());
-    //console.log(urlEndpoint);
     return this.http.post<any>(urlEndpoint, usuario, { headers: httpHeaders });
   }
 
@@ -72,8 +68,6 @@ export class AuthService {
       'X-Requested-With': 'XMLHttpRequest',
       'Authorization': tokenCat
     });
-    //console.log(httpHeaders.get('Authorization'));
-    //console.log(urlEndpointInf);
     return this.http.get<any>(urlEndpointInf,  { headers: httpHeaders });
   }
 

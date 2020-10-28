@@ -12,9 +12,7 @@ import { AsociadosComponent } from './components/asociados/asociados.component';
 import { PagoClienteComponent } from './components/pago-cliente/pago-cliente.component';
 import { PerfilProfesionalComponent } from './components/perfil-profesional/perfil-profesional.component';
 import { FormsModule } from '@angular/forms';
-import {MatCardModule, MatTabsModule, MatFormFieldModule,
-  MatInputModule, MatCheckboxModule, MatIconModule
-} from '@angular/material';
+import {MatCardModule, MatTabsModule} from '@angular/material';
 import { AsociadoComponent } from './components/asociado/asociado.component';
 import { TareaCotizarComponent } from './components/tarea-cotizar/tarea-cotizar.component';
 import { PagoExitosoComponent } from './components/pago-exitoso/pago-exitoso.component';
@@ -45,12 +43,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatInputModule,
     MatCardModule,
     MatTabsModule,
-    MatFormFieldModule,
-    MatCheckboxModule,
-    MatIconModule,
     APP_ROUTING,
     HttpClientModule
   ],

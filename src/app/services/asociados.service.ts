@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Asociados } from '../models/asociados';
 import { of, Observable, from} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {map,tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 
 @Injectable()
@@ -14,9 +14,8 @@ export class AsociadosService {
 getAsociados(): Observable <any>{
   return this.http.get(this.urlEndPoint).pipe(
     tap ((response:any)=>{
-      console.log('clienteService: Tap1 ');
       (response.result.data as Asociados[]).forEach( asociado=>{
-        console.log(asociado.name);
+        // console.log(asociado.name);
       });
     }),
     map((response: any) => {
@@ -37,6 +36,18 @@ getAsociadoDetail(id: string): Observable<any> {
   });
   return this.http.get<any>(urlEndpointInf,  { headers: httpHeaders });
 }
+
+getAsociadosBusqueda(edo: string, catego: string, mpio: string): Observable<any> {
+  const urlEndpoint = 'http://back2end.com/api/services/search';
+  const body = { estado: edo , categoria: catego, municipio: mpio};
+  const httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest '
+  });
+
+  return this.http.post<any>(urlEndpoint, body, { headers: httpHeaders });
+}
+
 
 
 

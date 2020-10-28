@@ -14,24 +14,29 @@
                         <input class="form-control form-control-sm" type="text" placeholder="Nombre(opcional)">
                     </div>
                     <div class="col-sm-6 my-1">
-                        <select class="form-control form-control-sm">
-                        <option>Carpinteria</option>
-                        <option>Plomeria</option>
-                      </select>
+                        <select class="form-control form-control-sm" id="cateoria" name="categoria" [(ngModel)]="categoChoise">
+                            <option [ngValue]="catego.id" *ngFor="let catego of categorias" >
+                              {{catego.name}}
+                            </option>
+                        </select>
                     </div>
                     <div class="col-sm-6 my-1">
-                        <select class="form-control form-control-sm">
-                        <option>Estado</option>
-                        <option>Plomeria</option>
-                      </select>
+
+                        <select class="form-control form-control-sm" id="estado" name="estado" [(ngModel)]="estadoChoise" (change)="cambioEdo()">
+                            <option [ngValue]="estado.id" *ngFor="let estado of estados" >
+                          {{estado.name}}
+                        </option>
+              </select>
                     </div>
                     <div class="col-sm-6 my-1">
-                        <select class="form-control form-control-sm">
-                        <option>Mpio / Alcaldia</option>
-                        <option>Plomeria</option>
-                      </select>
+                        <select class="form-control form-control-sm" id="mpio" name="mpio" [(ngModel)]="mpioChoise">
+                            <option [ngValue]="mpio.id" *ngFor="let mpio of municipios">
+                                {{mpio.name}}
+                            </option>
+                            </select>
                     </div>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" (click)='buscar()'>Buscar</button>
+                    <div style="width: 100%" class="alert alert-info" role="alert"> *Pista: Carpintería / CDMX / Cuajimalpa tiene información (Entre otros)</div>
                 </div>
             </form>
         </div>
@@ -47,8 +52,8 @@
 
 
     <!-- Page Heading -->
-    <h2 class="my-4">Revisa
-        <small>Profesionales cerca de ti</small>
+    <h2 class="my-4">Revisa profesionales cerca de ti
+
     </h2>
 
     <div *ngFor="let asociado of asociados">
@@ -73,7 +78,7 @@
 
 
 
-    <!-- Pagination -->
+    <!-- Pagination 
     <ul class="pagination justify-content-center">
         <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
@@ -96,7 +101,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </li>
-    </ul>
+    </ul>-->
 
 </div>
 <!-- /.container -->
